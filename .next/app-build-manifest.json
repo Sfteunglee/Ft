@@ -21,11 +21,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/survey/page.js"
     ],
-    "/chat/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/chat/page.js"
-    ],
     "/map/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

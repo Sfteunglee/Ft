@@ -140,7 +140,7 @@ export const SurveyScreen = () => {
               {companions.map(c => (
                 <button
                   key={c}
-                  onClick={() => setSelectedCompanions(prev => prev.includes(c) ? prev.filter(x => x !== c) : [...prev, c])}
+                  onClick={() => setSelectedCompanions([c])}
                   className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all ${selectedCompanions.includes(c) ? 'bg-[#0066FF] text-white' : 'bg-gray-100 text-gray-400'}`}
                 >
                   {c}
@@ -174,10 +174,10 @@ export const SurveyScreen = () => {
                 step="1"
                 value={budget[0]}
                 onChange={(e) => {
-                  const val = Math.min(parseInt(e.target.value), budget[1] - 2);
+                  const val = Math.min(parseInt(e.target.value), budget[1] - 1);
                   setBudget([val, budget[1]]);
                 }}
-                className="absolute w-full h-1.5 opacity-0 cursor-pointer pointer-events-auto z-10"
+                className="absolute w-full h-10 appearance-none bg-transparent pointer-events-none z-30 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-10 [&::-webkit-slider-thumb]:h-10 [&::-webkit-slider-thumb]:bg-transparent [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:w-10 [&::-moz-range-thumb]:h-10 [&::-moz-range-thumb]:bg-transparent"
               />
               <input
                 type="range"
@@ -186,10 +186,10 @@ export const SurveyScreen = () => {
                 step="1"
                 value={budget[1]}
                 onChange={(e) => {
-                  const val = Math.max(parseInt(e.target.value), budget[0] + 2);
+                  const val = Math.max(parseInt(e.target.value), budget[0] + 1);
                   setBudget([budget[0], val]);
                 }}
-                className="absolute w-full h-1.5 opacity-0 cursor-pointer pointer-events-auto z-10"
+                className="absolute w-full h-10 appearance-none bg-transparent pointer-events-none z-30 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-10 [&::-webkit-slider-thumb]:h-10 [&::-webkit-slider-thumb]:bg-transparent [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:w-10 [&::-moz-range-thumb]:h-10 [&::-moz-range-thumb]:bg-transparent"
               />
               {/* Visual Handles */}
               <div

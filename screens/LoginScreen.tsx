@@ -10,8 +10,30 @@ import { useRouter } from 'next/navigation';
 export const LoginScreen = () => {
   const router = useRouter();
 
+  // 구글 로그인 연동 준비
+  const handleGoogleLogin = () => {
+    if (typeof window !== 'undefined' && (window as any).google) {
+      (window as any).google.accounts.id.initialize({
+        client_id: "117313124086-rc4e20pfeo597aqolshtspeunsh3hmh3.apps.googleusercontent.com",
+        callback: (response: any) => {
+          console.log("Google Login Response:", response);
+          // TODO: 백엔드(몽고DB) 연동 및 JWT 처리
+          router.push('/onboarding?mode=google');
+        }
+      });
+      (window as any).google.accounts.id.prompt();
+    } else {
+      // 스크립트 로드 대기 또는 예외 처리
+      handleStart('google');
+    }
+  };
+
   const handleStart = (mode: 'google' | 'guest') => {
-    router.push(`/onboarding?mode=${mode}`);
+    if (mode === 'google') {
+      handleGoogleLogin();
+    } else {
+      router.push(`/onboarding?mode=${mode}`);
+    }
   };
 
   return (

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navigation } from "../components/Navigation";
+import Script from "next/script";
 
 export const metadata: Metadata = {
     title: "光州 ON | AI Travel Curator",
@@ -22,6 +23,8 @@ export default function RootLayout({
                     {children}
                     <Navigation />
                 </main>
+                {/* Google Identity Services for login */}
+                <Script src="https://accounts.google.com/gsi/client" strategy="lazyOnload" />
             </body>
         </html>
     );
